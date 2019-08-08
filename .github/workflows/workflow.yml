@@ -1,0 +1,30 @@
+name: CI
+
+on: [push]
+
+jobs:
+  build:
+    container:
+      image: rstudio/r-base:3.6-xenial
+      env:
+        R_LIBS_USER: ~/R/library
+    steps:
+      - uses: actions/checkout@master
+      - name: Install System Dependencies
+        run: |
+          sudo apt-get update && sudo apt-get install -y libxml2-dev libssl-dev
+      - name: Run a multi-line script
+        bash: |
+          echo Add other actions to build,
+          echo test, and deploy your project.
+      - name: Setting up R library
+        bash: |
+          echo 'options(repos = "$(CRAN)", Ncpus = 2, crayon.enabled = TRUE)' > ~/.Rprofile
+          mkdir -p $(R_LIBS_USER)
+      - name: Install package dependencies
+        bash: |
+          Rscript -e "install.packages(c('remotes', 'rcmdcheck'))"
+          Rscript -e "remotes::install_deps(dependencies = TRUE)"
+      - name: Check package
+        bash: |
+          Rscript -e "rcmdcheck::rcmdcheck(args = ${{parameters.args}}, error_on = 'error', check_dir = 'check')"
