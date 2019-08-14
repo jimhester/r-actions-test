@@ -5,11 +5,9 @@ on: [push]
 jobs:
   build:
     runs-on: macOS-latest
-    container:
-      image: rstudio/r-base:3.6-xenial
-      env:
-        R_LIBS_USER: ~/R/library
     steps:
+      - env:
+        R_LIBS_USER: ~/R/library
       - uses: actions/checkout@master
       - name: Install System Dependencies
         run: |
