@@ -9,6 +9,7 @@ jobs:
       image: rstudio/r-base:3.6-xenial
       env:
         R_LIBS_USER: ~/R/library
+        CRAN: https://cloud.r-project.org
     steps:
       - name: Test Env Var
         run: echo ${CRAN}
