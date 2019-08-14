@@ -4,18 +4,26 @@ on: [push]
 
 jobs:
   build:
-    name: Build Package
     runs-on: ubuntu-18.04
+    container:
+      image: rstudio/r-base:3.6-xenial
+      env:
+        R_LIBS_USER: ~/R/library
+        CRAN: https://cloud.r-project.org
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout Repository
+        uses: actions/checkout@master
       - name: Install System Dependencies
-        uses: docker://rstudio/r-base:3.6-xenial
-        env:
-          R_LIBS_USER: ~/R/library
         run: |
-          sudo apt-get update && sudo apt-get install -y libxml2-dev libssl-dev
-          echo 'options(repos = "$(CRAN)", Ncpus = 2, crayon.enabled = TRUE)' > ~/.Rprofile
-          mkdir -p $(R_LIBS_USER)
+            sudo apt-get update && sudo apt-get install -y libxml2-dev libssl-dev
+      - name: Setting up R library
+        run: |
+          echo 'options(repos = "'"${CRAN}"'", Ncpus = 2, crayon.enabled = TRUE)' > ~/.Rprofile
+          mkdir -p ${R_LIBS_USER}
+      - name: Install package dependencies
+        run: |
           Rscript -e "install.packages(c('remotes', 'rcmdcheck'))"
           Rscript -e "remotes::install_deps(dependencies = TRUE)"
-          Rscript -e "rcmdcheck::rcmdcheck(args = ${{parameters.args}}, error_on = 'error', check_dir = 'check')"
+      - name: Check package
+        run: |
+          Rscript -e "rcmdcheck::rcmdcheck(error_on = 'error', check_dir = 'check')"
