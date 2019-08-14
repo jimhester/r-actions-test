@@ -11,8 +11,6 @@ jobs:
         R_LIBS_USER: ~/R/library
         CRAN: https://cloud.r-project.org
     steps:
-      - name: Test Env Var
-        run: echo ${CRAN}
       - name: Checkout Repository
         uses: actions/checkout@master
       - name: Install System Dependencies
