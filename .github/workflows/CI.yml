@@ -16,8 +16,7 @@ jobs:
         run: |
           sudo apt-get update && sudo apt-get install -y libxml2-dev libssl-dev
       - name: Setting up R library
-        run:
-          shell: bash
+        shell: bash
         run: |
             echo $(R_LIBS_USER)
             echo 'options(repos = "$(CRAN)", Ncpus = 2, crayon.enabled = TRUE)' > ~/.Rprofile
