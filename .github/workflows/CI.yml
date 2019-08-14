@@ -10,12 +10,12 @@ jobs:
       env:
         R_LIBS_USER: ~/R/library
     steps:
+      - name: Test Env Var
+        run: echo $(R_LIBS_USER)
       - name: Checkout Repository
         uses: actions/checkout@master
       - name: Install System Dependencies
-        run: 
-          bash: |
-            echo $(R_LIBS_USER)
+        run: |
             sudo apt-get update && sudo apt-get install -y libxml2-dev libssl-dev
       - name: Setting up R library
         run: |
