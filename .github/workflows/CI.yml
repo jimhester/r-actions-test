@@ -9,7 +9,8 @@ jobs:
       env:
         R_LIBS_USER: ~/R/library
     steps:
-      - uses: actions/checkout@master
+      - name: Checkout Repository
+        uses: actions/checkout@master
       - name: Install System Dependencies
         run: |
           sudo apt-get update && sudo apt-get install -y libxml2-dev libssl-dev
