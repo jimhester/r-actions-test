@@ -11,7 +11,7 @@ jobs:
         R_LIBS_USER: ~/R/library
     steps:
       - name: Test Env Var
-        run: echo $R_LIBS_USER
+        run: echo ${R_LIBS_USER}
       - name: Checkout Repository
         uses: actions/checkout@master
       - name: Install System Dependencies
