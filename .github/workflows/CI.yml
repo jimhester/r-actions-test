@@ -19,8 +19,8 @@ jobs:
             sudo apt-get update && sudo apt-get install -y libxml2-dev libssl-dev
       - name: Setting up R library
         run: |
-          echo 'options(repos = "$(CRAN)", Ncpus = 2, crayon.enabled = TRUE)' > ~/.Rprofile
-          mkdir -p ~/R/library
+          echo 'options(repos = "${CRAN}", Ncpus = 2, crayon.enabled = TRUE)' > ~/.Rprofile
+          mkdir -p ${R_LIBS_USER}
       - name: Install package dependencies
         run: |
           Rscript -e "install.packages(c('remotes', 'rcmdcheck'))"
