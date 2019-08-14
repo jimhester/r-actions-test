@@ -9,6 +9,8 @@ jobs:
       - name: Check package
         uses: actions/checkout@master
       - name: Installing R
+        env:
+          CRAN: https://cloud.r-project.org
         run: |
            curl -fLo /tmp/R.pkg "${CRAN}/bin/macosx/R-latest.pkg"
            sudo installer -pkg "/tmp/R.pkg" -target /
