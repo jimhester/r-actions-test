@@ -27,4 +27,4 @@ jobs:
           Rscript -e "remotes::install_deps(dependencies = TRUE)"
       - name: Check package
         shell: |
-          Rscript -e "rcmdcheck::rcmdcheck(args = ${{parameters.args}}, error_on = 'error', check_dir = 'check')"
+          Rscript -e "rcmdcheck::rcmdcheck(args = '--no-manual', error_on = 'error', check_dir = 'check')"
