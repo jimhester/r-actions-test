@@ -18,7 +18,7 @@ jobs:
       - name: Setting up R library
         run: |
           echo 'options(repos = "$(CRAN)", Ncpus = 2, crayon.enabled = TRUE)' > ~/.Rprofile
-          mkdir -p $(R_LIBS_USER)
+          mkdir -p ~/R/library
       - name: Install package dependencies
         run: |
           Rscript -e "install.packages(c('remotes', 'rcmdcheck'))"
