@@ -9,8 +9,8 @@ jobs:
       - name: Check package
         uses: actions/checkout@master
       - name: Installing R
-        env:
-          CRAN: https://cloud.r-project.org
+          env:
+            CRAN: https://cloud.r-project.org
         run: |
            curl -fLo /tmp/R.pkg "${CRAN}/bin/macosx/R-latest.pkg"
            sudo installer -pkg "/tmp/R.pkg" -target /
@@ -20,7 +20,7 @@ jobs:
           R_LIBS_USER: ~/R/library
           CRAN: https://cloud.r-project.org
         run: |
-          echo 'options(repos = "${CRAN}", Ncpus = 2, crayon.enabled = TRUE)' > ~/.Rprofile
+          echo 'options(repos = Sys.getenv("CRAN"), Ncpus = 2, crayon.enabled = TRUE)' > ~/.Rprofile
           mkdir -p ${R_LIBS_USER}
       - name: Install package dependencies
         env:
