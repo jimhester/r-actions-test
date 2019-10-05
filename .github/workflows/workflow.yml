@@ -10,7 +10,8 @@ jobs:
         r: ['3.4', '3.5', '3.6']
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v1
+      - name: Checkout repository
+        uses: actions/checkout@v1
       - name: Setup R
         uses: jimhester/setup-r@master
         with:
