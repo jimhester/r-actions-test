@@ -4,34 +4,20 @@ on: [push]
 
 jobs:
   build:
-    runs-on: macOS-latest
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+        r: ['3.4', '3.5', '3.6']
+    runs-on: ${{ matrix.os }}
     steps:
-      - name: Check package
-        uses: actions/checkout@master
-      - name: Installing R
-        env:
-          CRAN: https://cloud.r-project.org
-        run: |
-           curl -fLo /tmp/R.pkg "${CRAN}/bin/macosx/R-latest.pkg"
-           sudo installer -pkg "/tmp/R.pkg" -target /
-           rm /tmp/R.pkg
-      - name: Setting up R library
-        env:
-          R_LIBS_USER: ~/R/library
-          CRAN: https://cloud.r-project.org
-        run: |
-          echo 'options(repos = Sys.getenv("CRAN"), Ncpus = 2, crayon.enabled = TRUE)' > ~/.Rprofile
-          mkdir -p ${R_LIBS_USER}
+      - uses: actions/checkout@v1
+      - name: Setup R
+        uses: jimhester/setup-r@master
+        with:
+          r-version: ${{ matrix.r }}
       - name: Install package dependencies
-        env:
-          R_LIBS_USER: ~/R/library
-          CRAN: https://cloud.r-project.org
         run: |
-          Rscript -e "install.packages(c('remotes', 'rcmdcheck'))"
-          Rscript -e "remotes::install_deps(dependencies = TRUE)"
+          Rscript -e 'install.packages(c("remotes", "rcmdcheck"))'
+          Rscript -e 'remotes::install_deps(dependencies=TRUE)'
       - name: Check package
-        env:
-          R_LIBS_USER: ~/R/library
-          CRAN: https://cloud.r-project.org
-        run: |
-          Rscript -e "rcmdcheck::rcmdcheck(args = '--no-manual', error_on = 'error', check_dir = 'check')"
+        run: Rscript -e 'rcmdcheck::rcmdcheck(args="--no-manual", error_on="error", check_dir="check")'
