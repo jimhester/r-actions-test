@@ -18,7 +18,7 @@ jobs:
           r-version: ${{ matrix.r }}
       - name: Install package dependencies
         run: |
-          Rscript -e 'install.packages(c("remotes", "rcmdcheck"))'
-          Rscript -e 'remotes::install_deps(dependencies=TRUE)'
+          Rscript -e "install.packages(c('remotes', 'rcmdcheck'))"
+          Rscript -e "remotes::install_deps(dependencies=TRUE)"
       - name: Check package
-        run: Rscript -e 'rcmdcheck::rcmdcheck(args="--no-manual", error_on="error", check_dir="check")'
+        run: Rscript -e "rcmdcheck::rcmdcheck(args='--no-manual', error_on='error', check_dir='check')"
