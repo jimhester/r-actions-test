@@ -1,1 +1,3 @@
-foo <- function(x) {x + 1}
+foo <- function(x) {
+  x + 1
+}
