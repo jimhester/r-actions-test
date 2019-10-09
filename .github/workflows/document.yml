@@ -8,6 +8,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+      - uses: jimhester/setup-r@master
       - name: Document
         uses: jimhester/document-v2@master
         env:
