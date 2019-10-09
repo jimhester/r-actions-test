@@ -13,5 +13,5 @@ jobs:
         run: Rscript -e 'install.packages("remotes")' -e 'remotes::install_deps(dependencies = TRUE)'
       - name: Document
         uses: jimhester/document-v2@master
-        env:
+        with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
