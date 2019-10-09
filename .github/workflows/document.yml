@@ -9,6 +9,6 @@ jobs:
     steps:
       - uses: actions/checkout@master
       - name: Document
-        uses: jimhester/document-r@master
+        uses: jimhester/document-v2@master
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
