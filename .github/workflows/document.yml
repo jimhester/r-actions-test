@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@master
       - uses: jimhester/setup-r@master
       - name: Install dependencies
-        script: Rscript -e 'install.packages("remotes")' -e 'remotes::install_deps(dependencies = TRUE)'
+        run: Rscript -e 'install.packages("remotes")' -e 'remotes::install_deps(dependencies = TRUE)'
       - name: Document
         uses: jimhester/document-v2@master
         env:
