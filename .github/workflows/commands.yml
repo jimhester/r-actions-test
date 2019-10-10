@@ -8,6 +8,7 @@ jobs:
     name: document
     runs-on: macOS-latest
     steps:
+      - uses: actions/checkout@master
       - uses: jimhester/pr-fetch@master
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
