@@ -4,6 +4,7 @@ on:
 name: Document
 jobs:
   document:
+    if: startsWith(github.event.body, "/document")
     name: document
     runs-on: macOS-latest
     steps:

@@ -4,6 +4,7 @@ on:
 name: Style
 jobs:
   style:
+    if: startsWith(github.event.body, "/style")
     name: style
     runs-on: ubuntu-latest
     steps:
