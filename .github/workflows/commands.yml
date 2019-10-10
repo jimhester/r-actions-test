@@ -24,16 +24,24 @@ jobs:
       - uses: jimhester/pr-push@master
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-  #style:
-    #if: startsWith(github.event.comment.body, '/style')
-    #name: style
-    #runs-on: macOS-latest
-    #steps:
-      #- uses: actions/checkout@master
-      #- uses: jimhester/setup-r@master
-      #- name: Install dependencies
-        #run: Rscript -e 'install.packages("remotes")' -e 'remotes::install_deps(dependencies = TRUE)'
-      #- name: style
-        #uses: jimhester/document-v2@master
-        #with:
-          #repo-token: ${{ secrets.GITHUB_TOKEN }}
+  style:
+    if: startsWith(github.event.comment.body, '/style')
+    name: document
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: jimhester/pr-fetch@master
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      - uses: jimhester/setup-r@master
+      - name: Install dependencies
+        run: Rscript -e 'install.packages("styler")'
+      - name: style
+        run: Rscript -e 'styler::style_pkg()'
+      - name: commit
+        run: |
+          git add \*.R
+          git commit -m 'style' --author 'GitHub Actions <actions@github.com>'
+      - uses: jimhester/pr-push@master
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
