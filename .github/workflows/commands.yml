@@ -9,10 +9,10 @@ jobs:
     runs-on: macOS-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: jimhester/pr-fetch
+      - uses: jimhester/pr-fetch@master
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: jimhester/setup-r
+      - uses: r-lib/actions/setup-r@master
       - name: Install dependencies
         run: Rscript -e 'install.packages(c("remotes", "roxygen2"))' -e 'remotes::install_deps(dependencies = TRUE)'
       - name: Document
@@ -33,7 +33,7 @@ jobs:
       - uses: jimhester/pr-fetch@master
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: jimhester/setup-r@master
+      - uses: r-lib/actions/setup-r@master
       - name: Install dependencies
         run: Rscript -e 'install.packages("styler")'
       - name: style

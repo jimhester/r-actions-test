@@ -13,7 +13,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v1
       - name: Setup R
-        uses: jimhester/setup-r@master
+        uses: r-lib/actions/setup-r@master
         with:
           r-version: ${{ matrix.r }}
       - name: Install package dependencies
