@@ -18,7 +18,7 @@ jobs:
         run: |
           git add 'man/*' NAMESPACE
           git commit -m 'Document' --author 'Actions actions@github.com'
-        uses: jimhester/pr-push@master
+      - uses: jimhester/pr-push@master
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
   #style:
