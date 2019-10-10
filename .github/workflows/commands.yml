@@ -9,6 +9,8 @@ jobs:
     runs-on: macOS-latest
     steps:
       - uses: actions/checkout@master
+        with:
+          ref: refs/heads/${{ github.head_ref }}
       - uses: jimhester/setup-r@master
       - name: Install dependencies
         run: Rscript -e 'install.packages(c("remotes", "roxygen2"))' -e 'remotes::install_deps(dependencies = TRUE)'
