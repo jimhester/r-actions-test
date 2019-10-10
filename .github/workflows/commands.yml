@@ -1,0 +1,36 @@
+on:
+  issue_comment:
+    types: [created]
+name: Commands
+jobs:
+  document:
+    if: startsWith(github.event.comment.body, '/document')
+    name: document
+    runs-on: macOS-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: jimhester/setup-r@master
+      - name: Install dependencies
+        run: Rscript -e 'install.packages("remotes")' -e 'remotes::install_deps(dependencies = TRUE)'
+      - name: Document
+        run: Rscript -e 'roxygen2::roxygenise()'
+      - name: commit
+        run: |
+          git add 'man/*' NAMESPACE
+          git commit -m 'Document' --author 'Actions actions@github.com'
+        uses: jimhester/pr-push@master
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+  #style:
+    #if: startsWith(github.event.comment.body, '/style')
+    #name: style
+    #runs-on: macOS-latest
+    #steps:
+      #- uses: actions/checkout@master
+      #- uses: jimhester/setup-r@master
+      #- name: Install dependencies
+        #run: Rscript -e 'install.packages("remotes")' -e 'remotes::install_deps(dependencies = TRUE)'
+      #- name: style
+        #uses: jimhester/document-v2@master
+        #with:
+          #repo-token: ${{ secrets.GITHUB_TOKEN }}
