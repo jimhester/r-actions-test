@@ -20,7 +20,7 @@ jobs:
       - name: commit
         run: |
           git add man/\* NAMESPACE
-          git commit -m 'Document' --author 'Actions actions@github.com'
+          git commit -m 'Document' --author 'GitHub Actions <actions@github.com>'
       - uses: jimhester/pr-push@master
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
