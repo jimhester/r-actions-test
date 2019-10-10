@@ -8,11 +8,11 @@ jobs:
     name: document
     runs-on: macOS-latest
     steps:
-      - uses: actions/checkout@master
-      - uses: jimhester/pr-fetch@master
+      - uses: actions/checkout@v1
+      - uses: jimhester/pr-fetch
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
-      - uses: jimhester/setup-r@master
+      - uses: jimhester/setup-r
       - name: Install dependencies
         run: Rscript -e 'install.packages(c("remotes", "roxygen2"))' -e 'remotes::install_deps(dependencies = TRUE)'
       - name: Document
