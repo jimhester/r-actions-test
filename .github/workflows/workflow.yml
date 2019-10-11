@@ -1,52 +1,43 @@
-name: CI
-
-on: [push]
+name: Continuous integration
 
 jobs:
-  build:
-    container: rstudio/r-base:3.6-xenial
-    env:
-      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
-      CI: true
+  macOS-checks:
+    name: macOS Checks
+    runs-on: macOS-latest
     strategy:
       matrix:
-        name: [mac-3.2, mac-3.3, mac-3.4, mac-3.5, mac-3.6, mac-devel, win-3.x, ubuntu-3.x]
-        include:
-          - name: mac-3.2
-            os: macOS-latest
-            r: '3.2'
-          - name: mac-3.3
-            os: macOS-latest
-            r: '3.3'
-          - name: mac-3.4
-            os: macOS-latest
-            r: '3.4'
-          - name: mac-3.5
-            os: macOS-latest
-            r: '3.5'
-          - name: mac-3.6
-            os: macOS-latest
-            r: '3.6'
-          - name: mac-devel
-            os: macOS-latest
-            r: 'devel'
-          - name: win-3.x
-            os: windows-latest
-            r: '3.x'
-          - name: ubuntu-3.x
-            os: ubuntu-latest
-            r: '3.x'
-    runs-on: ${{ matrix.os }}
+        r: ['3.2', '3.3', '3.4', '3.5', '3.6', 'devel']
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v1
-      - name: Setup R
-        uses: r-lib/actions/setup-r@master
+      - uses: actions/checkout@v1
+      - uses: r-lib/actions/setup-r@master
         with:
           r-version: ${{ matrix.r }}
-      - name: Install package dependencies
-        run: |
-          Rscript -e "install.packages(c('remotes', 'rcmdcheck'))"
-          Rscript -e "remotes::install_deps(dependencies=TRUE)"
-      - name: Check package
-        run: Rscript -e "rcmdcheck::rcmdcheck(args='--no-manual', error_on='error')"
+      - name: Install dependencies
+        run: Rscript -e 'install.packges("remotes")' -e 'remotes::install_deps(dependencies = TRUE)'
+      - name: Check
+        run: Rscript -e "rcmdcheck::rcmdcheck(manual = FALSE, error_on='error')"
+
+  linux-checks:
+    name: linux Checks
+    runs-on: ubuntu-latest
+    container: rstudio/r-base:3.6-xenial
+    env:
+      CRAN: 'https://demo.rstudiopm.com/all/__linux__/xenial/latest'
+    steps:
+      - uses: actions/checkout@v1
+      - uses: r-lib/actions/setup-r@master
+      - name: Install dependencies
+        run: Rscript -e 'install.packges("remotes")' -e 'remotes::install_deps(dependencies = TRUE)'
+      - name: Check
+        run: Rscript -e "rcmdcheck::rcmdcheck(manual = FALSE, error_on='error')"
+
+  windows-checks:
+    name: Windows Checks
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v1
+      - uses: r-lib/actions/setup-r@master
+      - name: Install dependencies
+        run: Rscript -e 'install.packges("remotes")' -e 'remotes::install_deps(dependencies = TRUE)'
+      - name: Check
+        run: Rscript -e "rcmdcheck::rcmdcheck(manual = FALSE, error_on='error')"
