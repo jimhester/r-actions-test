@@ -3,8 +3,7 @@ on: [push, pull_request]
 name: Continuous integration
 
 jobs:
-  macOS-checks:
-    name: macOS Checks
+  macOS:
     runs-on: macOS-latest
     strategy:
       matrix:
@@ -19,8 +18,7 @@ jobs:
       - name: Check
         run: Rscript -e "rcmdcheck::rcmdcheck(manual = FALSE, error_on='error')"
 
-  linux-checks:
-    name: linux Checks
+  linux:
     runs-on: ubuntu-latest
     container: rstudio/r-base:3.6-xenial
     env:
@@ -33,8 +31,7 @@ jobs:
       - name: Check
         run: Rscript -e "rcmdcheck::rcmdcheck(manual = FALSE, error_on='error')"
 
-  windows-checks:
-    name: Windows Checks
+  windows:
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v1
