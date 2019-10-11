@@ -6,12 +6,31 @@ jobs:
   build:
     strategy:
       matrix:
-        os: macOS-latest
-        r: ['3.2', '3.3', '3.4', '3.5', '3.6', 'devel']
+        name: [mac-3.2, mac-3.3, mac-3.4, mac-3.5, mac-3.6, mac-devel, win-3.x, ubuntu-3.x]
         include:
-          - os: ubuntu-latest
+          - mac-3.2:
+            os: macOS-latest
+            r: '3.2'
+          - mac-3.3:
+            os: macOS-latest
+            r: '3.3'
+          - mac-3.4:
+            os: macOS-latest
+            r: '3.4'
+          - mac-3.5:
+            os: macOS-latest
+            r: '3.5'
+          - mac-3.6:
+            os: macOS-latest
+            r: '3.6'
+          - mac-devel:
+            os: macOS-latest
+            r: 'devel'
+          - win-3.x:
+            os: windows-latest
             r: '3.x'
-          - os: windows-latest
+          - ubuntu-3.x:
+            os: ubuntu-latest
             r: '3.x'
     runs-on: ${{ matrix.os }}
     steps:
