@@ -4,6 +4,10 @@ on: [push]
 
 jobs:
   build:
+    container: rstudio/r-base:3.6-xenial
+    env:
+      R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
+      CI: true
     strategy:
       matrix:
         name: [mac-3.2, mac-3.3, mac-3.4, mac-3.5, mac-3.6, mac-devel, win-3.x, ubuntu-3.x]
