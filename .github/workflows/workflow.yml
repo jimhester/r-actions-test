@@ -17,7 +17,7 @@ jobs:
       - name: Install dependencies
         run: Rscript -e 'install.packages(c("remotes", "rcmdcheck"))' -e 'remotes::install_deps(dependencies = TRUE)'
       - name: Check
-        run: Rscript -e "rcmdcheck::rcmdcheck(manual = FALSE, error_on='error')"
+        run: Rscript -e "rcmdcheck::rcmdcheck(args = '--no-manual', error_on='error')"
 
   linux:
     runs-on: ubuntu-latest
@@ -31,7 +31,7 @@ jobs:
       - name: Install dependencies
         run: Rscript -e 'install.packages(c("remotes", "rcmdcheck"))' -e 'remotes::install_deps(dependencies = TRUE)'
       - name: Check
-        run: Rscript -e "rcmdcheck::rcmdcheck(manual = FALSE, error_on='error')"
+        run: Rscript -e "rcmdcheck::rcmdcheck(args = '--no-manual', error_on='error')"
 
   windows:
     runs-on: windows-latest
@@ -42,4 +42,4 @@ jobs:
       - name: Install dependencies
         run: Rscript -e 'install.packages(c("remotes", "rcmdcheck"))' -e 'remotes::install_deps(dependencies = TRUE)'
       - name: Check
-        run: Rscript -e "rcmdcheck::rcmdcheck(manual = FALSE, error_on='error')"
+        run: Rscript -e "rcmdcheck::rcmdcheck(args = '--no-manual', error_on='error')"
