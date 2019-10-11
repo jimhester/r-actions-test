@@ -1,3 +1,3 @@
 # R-actions-test
 
-A repo for testing GitHub Actions - foo bar
+A repo for testing GitHub Actions - foo bar baz
