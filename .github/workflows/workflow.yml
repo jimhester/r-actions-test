@@ -6,7 +6,7 @@ jobs:
   build:
     strategy:
       matrix:
-        os: macOS-latest
+        os: [macOS-latest]
         r: ['3.2', '3.3', '3.4', '3.5', '3.6', 'devel']
         include:
           - os: ubuntu-latest
