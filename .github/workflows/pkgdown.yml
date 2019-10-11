@@ -31,5 +31,3 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           Rscript -e "pkgdown:::deploy_local(new_process = FALSE, remote_url = sprintf('https://x-access-token:%s@github.com/jimhester/r-actions-test.git', Sys.getenv('GITHUB_TOKEN')))"
-      - name: Notify GitHub of the deployment
-        run: 
