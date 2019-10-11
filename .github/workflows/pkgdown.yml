@@ -2,6 +2,8 @@ on:
   push:
     branches: master
 
+name: Pkgdown
+
 jobs:
   pkgdown:
     runs-on: macOS-latest
