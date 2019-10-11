@@ -8,28 +8,28 @@ jobs:
       matrix:
         name: [mac-3.2, mac-3.3, mac-3.4, mac-3.5, mac-3.6, mac-devel, win-3.x, ubuntu-3.x]
         include:
-          - mac-3.2:
+          - name: mac-3.2
             os: macOS-latest
             r: '3.2'
-          - mac-3.3:
+          - name: mac-3.3
             os: macOS-latest
             r: '3.3'
-          - mac-3.4:
+          - name: mac-3.4
             os: macOS-latest
             r: '3.4'
-          - mac-3.5:
+          - name: mac-3.5
             os: macOS-latest
             r: '3.5'
-          - mac-3.6:
+          - name: mac-3.6
             os: macOS-latest
             r: '3.6'
-          - mac-devel:
+          - name: mac-devel
             os: macOS-latest
             r: 'devel'
-          - win-3.x:
+          - name: win-3.x
             os: windows-latest
             r: '3.x'
-          - ubuntu-3.x:
+          - name: ubuntu-3.x
             os: ubuntu-latest
             r: '3.x'
     runs-on: ${{ matrix.os }}
