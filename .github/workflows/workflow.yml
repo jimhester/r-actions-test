@@ -17,6 +17,8 @@ jobs:
       - name: Install LaTeX
         run: Rscript -e "install.packages('tinytex')" -e "tinytex::install_tinytex()"
       - name: Install dependencies
+        env:
+          R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
         run: Rscript -e "install.packages(c('remotes', 'rcmdcheck'))" -e "remotes::install_deps(dependencies = TRUE)"
       - name: Check
         run: Rscript -e "rcmdcheck::rcmdcheck(error_on = 'error')"
