@@ -46,7 +46,7 @@ jobs:
       - uses: r-lib/actions/setup-r@master
       - uses: r-lib/actions/setup-pandoc@master
       - name: Install LaTeX
-        run: Rscript -e "install.packages('tinytex')" -e "tinytex::install_tinytex()" -e "cat('::add-path::{%s}', tinytex::tinytex_root())"
+        run: Rscript -e "install.packages('tinytex')" -e "tinytex::install_tinytex()" -e "cat(sprintf('::add-path::%s', tinytex::tinytex_root()))"
       - name: Install dependencies
         run: Rscript -e "install.packages(c('remotes', 'rcmdcheck'))" -e "remotes::install_deps(dependencies = TRUE)"
       - name: Check
