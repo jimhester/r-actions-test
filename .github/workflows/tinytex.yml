@@ -3,8 +3,9 @@ on: [push, pull_request]
 name: TinyTeX
 
 jobs:
-  pandoc:
+  TinyTeX:
     strategy:
+      fail-fast: false
       matrix:
         os: [macOS-latest, ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
