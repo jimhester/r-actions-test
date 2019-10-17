@@ -36,6 +36,11 @@ jobs:
         run: Rscript -e "install.packages(c('remotes', 'rcmdcheck'))" -e "remotes::install_deps(dependencies = TRUE)"
       - name: Check
         run: Rscript -e "rcmdcheck::rcmdcheck(error_on = 'error')"
+      - name: Code Coverage
+        env: 
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
+        run: Rscript -e 'remotes::install_github("r-lib/covr@gh-actions")' \
+                     -e 'covr::codecov()'
 
   windows:
     runs-on: windows-latest
