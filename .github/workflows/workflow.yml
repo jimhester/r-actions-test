@@ -37,10 +37,12 @@ jobs:
       - name: Check
         run: Rscript -e "rcmdcheck::rcmdcheck(error_on = 'error')"
       - name: Code Coverage
-        env: 
+        env:
           CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}
-        run: Rscript -e 'remotes::install_github("r-lib/covr@gh-actions")' \
-                     -e 'covr::codecov()'
+        run: |
+          Rscript -e 'remotes::install_github("r-lib/covr@gh-actions")'
+          Rscript -e 'print(Sys.getenv())'
+          Rscript -e 'covr::codecov(quiet = FALSE)'
 
   windows:
     runs-on: windows-latest
