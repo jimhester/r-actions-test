@@ -6,6 +6,7 @@ jobs:
   CI:
     runs-on: ${{ matrix.cfg.os }}
     strategy:
+      fail-fast: false
       matrix:
         cfg:
         - { os: windows-latest, r: '3.x' }
@@ -30,6 +31,14 @@ jobs:
           key: ${{ runner.os }}-r-${{ hashFiles('**/DESCRIPTION') }}
           restore-keys: |
             ${{ runner.os }}-r-
+      - name: Install system dependencies
+        if: runner.os == 'Linux'
+        env:
+          RHUB_PLATFORM: linux-x86_64-ubuntu-gcc
+        run: |
+          Rscript -e "install.packages('remotes')" -e "remotes::install_github('r-hub/sysreqs')"
+          sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
+          eval "$sysreqs"
       - name: Install dependencies
         run: Rscript -e "install.packages(c('remotes', 'rcmdcheck'))" -e "remotes::install_deps(dependencies = TRUE)"
       - name: Check
