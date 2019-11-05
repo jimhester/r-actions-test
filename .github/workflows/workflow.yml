@@ -6,7 +6,6 @@ jobs:
   CI:
     runs-on: ${{ matrix.cfg.os }}
     strategy:
-      fail-fast: true
       matrix:
         cfg:
         - { os: windows-latest, r: '3.x' }
