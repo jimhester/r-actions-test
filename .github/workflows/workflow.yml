@@ -5,16 +5,17 @@ name: Continuous integration
 jobs:
   CI:
     strategy:
-      cfg:
-      - { os: windows-latest, r: '3.x' }
-      - { os: macOS-latest, r: '3.x' }
-      - { os: macOS-latest, r: 'devel' }
-      - { os: ubuntu-latest, r: '3.2' }
-      - { os: ubuntu-latest, r: '3.3' }
-      - { os: ubuntu-latest, r: '3.4' }
-      - { os: ubuntu-latest, r: '3.5' }
-      - { os: ubuntu-latest, r: '3.6' }
-    if: contains(cfg.os, 'ubuntu')
+      matrix:
+        cfg:
+        - { os: windows-latest, r: '3.x' }
+        - { os: macOS-latest, r: '3.x' }
+        - { os: macOS-latest, r: 'devel' }
+        - { os: ubuntu-latest, r: '3.2' }
+        - { os: ubuntu-latest, r: '3.3' }
+        - { os: ubuntu-latest, r: '3.4' }
+        - { os: ubuntu-latest, r: '3.5' }
+        - { os: ubuntu-latest, r: '3.6' }
+    if: contains(matrix.cfg.os, 'ubuntu')
     container: rstudio/r-base:${{ cfg.os }}-xenial
     steps:
       - uses: actions/checkout@v1
