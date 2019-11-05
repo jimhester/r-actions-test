@@ -15,7 +15,7 @@ jobs:
         - { os: ubuntu-latest, r: '3.4' }
         - { os: ubuntu-latest, r: '3.5' }
         - { os: ubuntu-latest, r: '3.6' }
-    runs_on: ${{ matrix.cfg.os }}
+    runs-on: ${{ matrix.cfg.os }}
     if: contains(matrix.cfg.os, 'ubuntu')
     container: rstudio/r-base:${{ matrix.cfg.os }}-xenial
     steps:
