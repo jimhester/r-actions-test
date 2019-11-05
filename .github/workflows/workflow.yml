@@ -30,7 +30,7 @@ jobs:
           path: ${{ env.R_LIBS_USER }}
           key: ${{ runner.os }}-r-${{ matrix.cfg.r }}-${{ hashFiles('**/DESCRIPTION') }}
           restore-keys: |
-            ${{ runner.os }}-r-
+            ${{ runner.os }}-r-${{ matrix.cfg.r }}
       - name: Install system dependencies
         if: runner.os == 'Linux'
         env:
