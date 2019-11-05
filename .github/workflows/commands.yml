@@ -9,7 +9,7 @@ jobs:
     runs-on: macOS-latest
     steps:
       - uses: actions/checkout@v1
-      - uses: jimhester/pr-fetch@master
+      - uses: r-lib/actions/pr-fetch@master
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
       - uses: r-lib/actions/setup-r@master
@@ -21,7 +21,7 @@ jobs:
         run: |
           git add man/\* NAMESPACE
           git commit -m 'Document' --author 'GitHub Actions <actions@github.com>'
-      - uses: jimhester/pr-push@master
+      - uses: r-lib/actions/pr-push@master
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
   style:
@@ -30,7 +30,7 @@ jobs:
     runs-on: macOS-latest
     steps:
       - uses: actions/checkout@master
-      - uses: jimhester/pr-fetch@master
+      - uses: r-lib/actions/pr-fetch@master
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
       - uses: r-lib/actions/setup-r@master
@@ -42,6 +42,6 @@ jobs:
         run: |
           git add \*.R
           git commit -m 'style' --author 'GitHub Actions <actions@github.com>'
-      - uses: jimhester/pr-push@master
+      - uses: r-lib/actions/pr-push@master
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
