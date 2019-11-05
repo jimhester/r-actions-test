@@ -16,7 +16,7 @@ jobs:
         - { os: ubuntu-latest, r: '3.5' }
         - { os: ubuntu-latest, r: '3.6' }
     if: contains(matrix.cfg.os, 'ubuntu')
-    container: rstudio/r-base:${{ cfg.os }}-xenial
+    container: rstudio/r-base:${{ matrix.cfg.os }}-xenial
     steps:
       - uses: actions/checkout@v1
       - uses: r-lib/actions/setup-r@master
