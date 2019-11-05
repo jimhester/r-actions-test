@@ -4,7 +4,9 @@ name: Continuous integration
 
 jobs:
   CI:
+    runs-on: ${{ matrix.cfg.os }}
     strategy:
+      fail-fast: true
       matrix:
         cfg:
         - { os: windows-latest, r: '3.x' }
@@ -15,14 +17,11 @@ jobs:
         - { os: ubuntu-latest, r: '3.4' }
         - { os: ubuntu-latest, r: '3.5' }
         - { os: ubuntu-latest, r: '3.6' }
-    runs-on: ${{ matrix.cfg.os }}
-    if: contains(matrix.cfg.os, 'ubuntu')
-    container: rstudio/r-base:${{ matrix.cfg.os }}-xenial
     steps:
       - uses: actions/checkout@v1
       - uses: r-lib/actions/setup-r@master
         with:
-          r-version: ${{ matrix.r }}
+          r-version: ${{ matrix.cfg.r }}
       - uses: r-lib/actions/setup-pandoc@master
       - uses: r-lib/actions/setup-tinytex@master
       - name: Cache R packages
