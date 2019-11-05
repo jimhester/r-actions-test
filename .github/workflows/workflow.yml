@@ -9,8 +9,8 @@ jobs:
       fail-fast: false
       matrix:
         cfg:
-        - { os: windows-latest, r: '3.x' }
-        - { os: macOS-latest, r: '3.x' }
+        - { os: windows-latest, r: '3.6' }
+        - { os: macOS-latest, r: '3.6' }
         - { os: macOS-latest, r: 'devel' }
         - { os: ubuntu-latest, r: '3.2' }
         - { os: ubuntu-latest, r: '3.3' }
