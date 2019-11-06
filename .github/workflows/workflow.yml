@@ -24,6 +24,10 @@ jobs:
       - uses: r-lib/actions/setup-r@master
         with:
           r-version: ${{ matrix.config.r }}
+      - run: which gcc
+      - run: gcc --version
+      - run: g++ --version
+      - run: gfortran --version
       - uses: r-lib/actions/setup-pandoc@master
       - uses: r-lib/actions/setup-tinytex@master
       - name: Cache R packages
