@@ -11,13 +11,13 @@ jobs:
         config:
         - { os: windows-latest, r: '3.6' }
         - { os: macOS-latest, r: '3.6' }
-        - { os: macOS-latest, r: 'devel', env: R_REMOTES_NO_ERRORS_FROM_WARNINGS=true }
+        - { os: macOS-latest, r: 'devel'}
         - { os: ubuntu-latest, r: '3.2' }
         - { os: ubuntu-latest, r: '3.3' }
         - { os: ubuntu-latest, r: '3.4' }
         - { os: ubuntu-latest, r: '3.5' }
         - { os: ubuntu-latest, r: '3.6' }
-    env: ${{ matrix.config.env }}
+    env: R_REMOTES_NO_ERRORS_FROM_WARNINGS=true
     steps:
       - uses: actions/checkout@v1
       - uses: r-lib/actions/setup-r@master
