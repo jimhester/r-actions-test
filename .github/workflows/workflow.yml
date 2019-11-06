@@ -48,10 +48,10 @@ jobs:
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           eval "$sysreqs"
       - name: Install dependencies
-        run: Rscript -e "remotes::install_deps(dependencies = TRUE)" -e "remotes::install_cran('rcmdcheck')"
+        run: Rscript -e "install.packages('remotes')" -e "remotes::install_deps(dependencies = TRUE)" -e "remotes::install_cran('rcmdcheck')"
       - name: Check
         run: Rscript -e "rcmdcheck::rcmdcheck(error_on = 'error', check_dir = 'check')"
       - uses: actions/upload-artifact@master
         with:
-          name: check-results
+          name: ${{ runner.os }}-r${{ matrix.config.r }}-results
           path: check
