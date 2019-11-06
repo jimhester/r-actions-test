@@ -24,6 +24,7 @@ jobs:
       - uses: r-lib/actions/setup-r@master
         with:
           r-version: ${{ matrix.config.r }}
+          Ncpus: 1
       - run: which gcc
       - run: gcc --version
       - run: g++ --version
