@@ -23,7 +23,7 @@ jobs:
       CRAN: ${{ matrix.config.cran }}
     steps:
       - uses: actions/checkout@v1
-      - uses: r-lib/actions/setup-r@devel
+      - uses: r-lib/actions/setup-r@master
         with:
           r-version: ${{ matrix.config.r }}
       - uses: r-lib/actions/setup-pandoc@master
