@@ -58,11 +58,11 @@ jobs:
           install.packages("remotes")
           remotes::install_deps(dependencies = TRUE)
           remotes::install_cran("rcmdcheck")
-        shell: RScript {0}
+        shell: Rscript {0}
 
       - name: Check
         run: rcmdcheck::rcmdcheck(args = '${{ matrix.config.args }}', error_on = 'warning', check_dir = 'check')
-        shell: RScript {0}
+        shell: Rscript {0}
 
       - name: Upload check results
         if: failure()
