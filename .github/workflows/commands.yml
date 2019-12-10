@@ -45,3 +45,5 @@ jobs:
       - uses: r-lib/actions/pr-push@master
         with:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
+  end:
+    if: always()
