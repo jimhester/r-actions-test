@@ -47,4 +47,4 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
   end:
     steps:
-      run: true
+      - run: true
