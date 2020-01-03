@@ -1,5 +1,6 @@
+
 #' Try documenting
 #'
-#' @param x foo
+#' @param x the x parameter
 #' @export
 foo <- function(x) x + 1

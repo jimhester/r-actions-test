@@ -2,7 +2,7 @@
 % Please edit documentation in R/foo.R
 \name{foo}
 \alias{foo}
-\title{Try documenting}
+\title{Document a function}
 \usage{
 foo(x)
 }
