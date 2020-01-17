@@ -9,6 +9,7 @@ jobs:
         os: [macOS-latest, ubuntu-latest, windows-latest]
     runs-on: ${{ matrix.os }}
     steps:
+      - uses: actions/setup-python@v1
       - uses: r-lib/actions/setup-pandoc@v1
       - run: |
           echo "# hi" > test.md
