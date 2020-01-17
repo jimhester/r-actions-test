@@ -11,5 +11,7 @@ jobs:
     steps:
       - uses: actions/setup-python@v1
       - uses: r-lib/actions/setup-pandoc@v1
+        with:
+          pandoc-version: '2.9.1'
       - run: |
           echo "# hi" | pandoc -t html
