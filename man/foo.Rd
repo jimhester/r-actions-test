@@ -7,8 +7,8 @@
 foo(x)
 }
 \arguments{
-\item{x}{the x parameter}
+\item{x}{foo}
 }
 \description{
-Document a function
+Try documenting
 }
