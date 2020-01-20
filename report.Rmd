@@ -1,0 +1,7 @@
+A report
+
+```{r}
+mod <- readRDS("model.Rds")
+
+plot(mod)
+```
