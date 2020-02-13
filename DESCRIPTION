@@ -10,7 +10,7 @@ Authors@R:
       person(given = "RStudio",
              role = c("cph", "fnd")))
 Description: What the package does (one paragraph).
-Imports: tidyverse
+Imports: pkgbuild
 URL: https://github.com/jimhester/r-actions-test
 License: MIT + file LICENSE
 Encoding: UTF-8
