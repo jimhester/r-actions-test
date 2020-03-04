@@ -53,6 +53,10 @@ jobs:
           sysreqs=$(Rscript -e "cat(sysreqs::sysreq_commands('DESCRIPTION'))")
           sudo -s eval "$sysreqs"
 
+      - name: rJava
+        if: runner.os == 'macOS'
+        run:
+          R CMD javareconf
       - name: Install dependencies
         run: |
           install.packages("remotes")
