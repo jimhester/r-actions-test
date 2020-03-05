@@ -7,12 +7,13 @@ jobs:
     strategy:
       matrix:
         os: [macOS-latest, ubuntu-latest, windows-latest]
+        pandoc: ['2.7.3', '2.9.1', '2.9.2']
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/setup-python@v1
       - uses: r-lib/actions/setup-pandoc@v1
         with:
-          pandoc-version: '2.9.2'
+          pandoc-version: ${{ matrix.pandoc }}
       - run: |
           pandoc -v
           echo "# hi" | pandoc -t html
