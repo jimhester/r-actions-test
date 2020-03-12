@@ -59,5 +59,5 @@ jobs:
       - name: Check versions
         run: |
           str(options("repos"))
-          packageVersion("lifecycle")
+          packageVersion("pkgbuild")
         shell: Rscript {0}
