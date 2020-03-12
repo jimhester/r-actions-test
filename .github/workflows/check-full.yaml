@@ -1,4 +1,6 @@
-on: push
+on:
+  schedule:
+    - cron: '*/5 * * * *'
 
 name: R-CMD-check
 
@@ -12,10 +14,8 @@ jobs:
       fail-fast: false
       matrix:
         config:
-          - {os: windows-latest, r: '3.5'}
-          - {os: windows-latest, r: '3.6.2'}
-          - {os: windows-latest, r: '3.6'}
-          - {os: windows-latest, r: 'devel'}
+          - {os: macOS-latest, r: '3.6'}
+          - {os: macOS-latest, r: 'devel'}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
