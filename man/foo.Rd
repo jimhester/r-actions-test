@@ -12,3 +12,6 @@ foo(x)
 \description{
 Document a function
 }
+\examples{
+1 + 1 == foo(1)
+}
