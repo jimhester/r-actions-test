@@ -10,5 +10,6 @@ NULL
 #' @export
 foo = function(x) x + 1
 
+#' @rdname foo
 #' @export
 foo2 <- function(x) .Call(sum_, x)

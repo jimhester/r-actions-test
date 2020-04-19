@@ -2,9 +2,12 @@
 % Please edit documentation in R/foo.R
 \name{foo}
 \alias{foo}
+\alias{foo2}
 \title{Document a function}
 \usage{
 foo(x)
+
+foo2(x)
 }
 \arguments{
 \item{x}{the x parameter}
