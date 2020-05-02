@@ -76,8 +76,9 @@ jobs:
         run: rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
         shell: Rscript {0}
 
-      - name: Show testthat file
-        run: find check -name 'testthat.Rout' -exec cat '{}' \;
+      - name: Show testthat output
+        if: always()
+        run: find check -name 'testthat.Rout*' -exec cat '{}' \; || true
 
       - name: Upload check results
         if: failure()
