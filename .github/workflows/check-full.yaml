@@ -78,7 +78,8 @@ jobs:
 
       - name: Show testthat output
         if: always()
-        bash: find check -name 'testthat.Rout*' -exec cat '{}' \; || true
+        run: find check -name 'testthat.Rout*' -exec cat '{}' \; || true
+        shell: bash
 
       - name: Upload check results
         if: failure()
