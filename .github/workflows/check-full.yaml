@@ -40,8 +40,7 @@ jobs:
         run: |
           install.packages(
             "pak",
-            repos = "https://r-lib.github.io/p/pak/dev/",
-            type = "binary"
+            repos = "https://r-lib.github.io/p/pak/dev/"
           )
         shell: Rscript {0}
 
