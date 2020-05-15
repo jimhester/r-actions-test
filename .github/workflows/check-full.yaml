@@ -45,6 +45,8 @@ jobs:
         run: |
           install.packages("https://github.com/r-lib/remotes/archive/system-reqs.tar.gz")
           saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
+          v <- getRversion()
+          writeLines(sprintf("R-%i.%i", v$major, v$minor), ".github/R-version")
         shell: Rscript {0}
 
       - name: Cache R packages
@@ -52,8 +54,8 @@ jobs:
         uses: actions/cache@v1
         with:
           path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-r-${{ matrix.config.r }}-3-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: ${{ runner.os }}-r-${{ matrix.config.r }}-3-
+          key: ${{ runner.os }}-${{ runner.os }}-r-${{ hashFiles('.github/R-version') }}-3-${{ hashFiles('.github/depends.Rds') }}
+          restore-keys: ${{ runner.os }}-r-${{ hashFiles('.github/R-version') }}-3-
 
       - name: Install system dependencies
         if: runner.os == 'Linux'
