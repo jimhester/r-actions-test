@@ -37,6 +37,7 @@ jobs:
 
       - name: check user agent
         run: |
+          cat(".RProfile: ", paste0(readLines("~/.Rprofile"), collapse = "\n"), "\n", sep = "")
           cat("UserAgent: ", getOption("HTTPUserAgent"), "\n", sep = "")
           source("https://packagemanager.rstudio.com/__docs__/admin/check-user-agent.R")
         shell: Rscript {0}
