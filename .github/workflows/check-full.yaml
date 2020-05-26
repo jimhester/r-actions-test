@@ -22,10 +22,6 @@ jobs:
           - {os: macOS-latest,   r: '4.0'}
           - {os: windows-latest, r: '4.0'}
           - {os: ubuntu-16.04,   r: 'release', rspm: "https://demo.rstudiopm.com/all/__linux__/xenial/latest"}
-          - {os: ubuntu-16.04,   r: '3.6',     rspm: "https://demo.rstudiopm.com/all/__linux__/xenial/latest"}
-          - {os: ubuntu-16.04,   r: '3.5',     rspm: "https://demo.rstudiopm.com/all/__linux__/xenial/latest"}
-          - {os: ubuntu-16.04,   r: '3.4',     rspm: "https://demo.rstudiopm.com/all/__linux__/xenial/latest"}
-          - {os: ubuntu-16.04,   r: '3.3',     rspm: "https://demo.rstudiopm.com/all/__linux__/xenial/latest"}
 
     env:
       R_REMOTES_NO_ERRORS_FROM_WARNINGS: true
@@ -39,55 +35,8 @@ jobs:
         with:
           r-version: ${{ matrix.config.r }}
 
-      - uses: r-lib/actions/setup-pandoc@master
-
-      - name: Query dependencies
+      - name: check user agent
         run: |
-          install.packages("https://github.com/r-lib/remotes/archive/system-reqs.tar.gz")
-          saveRDS(remotes::dev_package_deps(dependencies = TRUE), ".github/depends.Rds", version = 2)
-          writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
+          cat(options("HTTPSUserAgent"))
+          source("https://packagemanager.rstudio.com/__docs__/admin/check-user-agent.R")
         shell: Rscript {0}
-
-      - name: Cache R packages
-        if: runner.os != 'Windows'
-        uses: actions/cache@v1
-        with:
-          path: ${{ env.R_LIBS_USER }}
-          key: ${{ runner.os }}-r-${{ hashFiles('.github/R-version') }}-3-${{ hashFiles('.github/depends.Rds') }}
-          restore-keys: ${{ runner.os }}-r-${{ hashFiles('.github/R-version') }}-3-
-
-      - name: Install system dependencies
-        if: runner.os == 'Linux'
-        run: |
-          while read -r cmd
-          do
-            eval sudo $cmd
-          done < <(Rscript -e 'cat(remotes::system_requirements("ubuntu", "16.04"), sep = "\n")')
-
-      - name: Install system dependencies
-        if: runner.os == 'macOS'
-        brew install udunits
-
-      - name: Install dependencies
-        run: |
-          remotes::install_deps(dependencies = TRUE)
-          remotes::install_cran("rcmdcheck")
-        shell: Rscript {0}
-
-      - name: Check
-        env:
-          _R_CHECK_CRAN_INCOMING_REMOTE_: false
-        run: rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")
-        shell: Rscript {0}
-
-      - name: Show testthat output
-        if: always()
-        run: find check -name 'testthat.Rout*' -exec cat '{}' \; || true
-        shell: bash
-
-      - name: Upload check results
-        if: failure()
-        uses: actions/upload-artifact@master
-        with:
-          name: ${{ runner.os }}-r${{ matrix.config.r }}-results
-          path: check
