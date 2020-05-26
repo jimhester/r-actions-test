@@ -31,12 +31,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: r-lib/actions/setup-r@master
+      - uses: r-lib/actions/setup-r@user-agent
         with:
           r-version: ${{ matrix.config.r }}
 
       - name: check user agent
         run: |
-          cat(options("HTTPSUserAgent"))
+          cat(getOption("HTTPSUserAgent"))
           source("https://packagemanager.rstudio.com/__docs__/admin/check-user-agent.R")
         shell: Rscript {0}
