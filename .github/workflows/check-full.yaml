@@ -66,7 +66,7 @@ jobs:
 
       - name: Install system dependencies
         if: runner.os == 'macOS'
-        brew install udunits
+        run : brew install udunits
 
       - name: Install dependencies
         run: |
