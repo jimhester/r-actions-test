@@ -20,6 +20,7 @@ jobs:
         config:
           - {os: macOS-latest, r: 'release'}
           - {os: windows-latest, r: 'release'}
+          - {os: windows-latest, r: 'olrel'}
           - {os: ubuntu-16.04,   r: 'release', rspm: "https://demo.rstudiopm.com/all/__linux__/xenial/latest"}
 
     env:
@@ -51,7 +52,7 @@ jobs:
           key: ${{ runner.os }}-r-${{ hashFiles('.github/R-version') }}-3-${{ hashFiles('.github/depends.Rds') }}
           restore-keys: ${{ runner.os }}-r-${{ hashFiles('.github/R-version') }}-3-
 
-      - name: Install system dependencies
+      - name: Install Linux system dependencies
         if: runner.os == 'Linux'
         run: |
           while read -r cmd
@@ -59,7 +60,7 @@ jobs:
             eval sudo $cmd
           done < <(Rscript -e 'cat(remotes::system_requirements("ubuntu", "16.04"), sep = "\n")')
 
-      - name: Install system dependencies
+      - name: Install macOS system dependencies
         if: runner.os == 'macOS'
         run : brew install udunits
 
