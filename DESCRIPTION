@@ -22,3 +22,4 @@ Suggests:
     sf
 RoxygenNote: 7.1.0
 VignetteBuilder: knitr
+Config/Needs/website: pkgdown
