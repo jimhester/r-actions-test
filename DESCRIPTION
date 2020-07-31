@@ -26,5 +26,3 @@ Suggests:
 RoxygenNote: 7.1.0
 VignetteBuilder: knitr
 Config/Needs/website: pkgdown
-Remotes:  
-    jimhester/crayon@github-actions
