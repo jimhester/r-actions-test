@@ -86,7 +86,9 @@ jobs:
       - name: Check
         env:
           _R_CHECK_CRAN_INCOMING_: false
-        run: faketty Rscript -e 'rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")'
+        run: |
+          echo 'rcmdcheck::rcmdcheck(args = c("--no-manual", "--as-cran"), error_on = "warning", check_dir = "check")' > .github/cmd
+          faketty Rscript .github/cmd
 
       - name: Show testthat output
         if: always()
