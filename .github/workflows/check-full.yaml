@@ -70,9 +70,9 @@ jobs:
 
       - name: Install dependencies
         run: |
-          install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
-          pak::local_install_dev_deps()
-          pak::pkg_install("rcmdcheck")
+          install.packages("remotes")
+          remotes::install_deps(dep = TRUE)
+          remotes::install_cran("rcmdcheck")
         shell: Rscript {0}
 
       - name: Session info

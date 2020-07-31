@@ -10,7 +10,8 @@ Authors@R:
       person(given = "RStudio",
              role = c("cph", "fnd")))
 Description: What the package does (one paragraph).
-Imports: pkgbuild
+Imports: 
+    pkgbuild
 URL: https://github.com/jimhester/r-actions-test
 License: MIT + file LICENSE
 Encoding: UTF-8
@@ -25,4 +26,5 @@ Suggests:
 RoxygenNote: 7.1.0
 VignetteBuilder: knitr
 Config/Needs/website: pkgdown
-Remotes: jimhester/crayon@github-actions
+Remotes:  
+    jimhester/crayon@github-actions
