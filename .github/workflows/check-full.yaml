@@ -40,6 +40,7 @@ jobs:
         with:
           r-version: ${{ matrix.config.r }}
           http-user-agent: ${{ matrix.config.http-user-agent }}
+          crayon.enabled: "NULL"
 
       - uses: r-lib/actions/setup-pandoc@master
 
