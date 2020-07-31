@@ -43,7 +43,6 @@ jobs:
           crayon.enabled: "NULL"
 
       - uses: r-lib/actions/setup-pandoc@master
-      - uses: Yuri6037/Action-FakeTTY@9e2316fcb0e6e6b803f91455b0e639b156ad83e7
 
       - name: Query dependencies
         run: |
