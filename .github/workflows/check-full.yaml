@@ -68,7 +68,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pak::local_dev_deps()
+          pak::local_install_dev_deps()
           pak::pkg_install("rcmdcheck")
         shell: Rscript {0}
 
