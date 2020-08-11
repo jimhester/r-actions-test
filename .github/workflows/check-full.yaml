@@ -46,7 +46,7 @@ jobs:
 
       - name: Install pak and store R version
         run: |
-          Rscript -e 'install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")'
+          install.packages("pak", repos = "https://r-lib.github.io/p/pak/dev/")
           writeLines(sprintf("R-%i.%i", getRversion()$major, getRversion()$minor), ".github/R-version")
         shell: Rscript {0}
 
