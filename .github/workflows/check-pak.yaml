@@ -57,6 +57,8 @@ jobs:
           key: ${{ runner.os }}-${{ steps.install-r.outputs.full-r-version }}-1-
 
       - uses: r-lib/actions/install-r-packages@install-r-action
+        with:
+          os-runner: ${{ runner.os }}
 
       - name: Check
         env:
