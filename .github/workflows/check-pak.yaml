@@ -50,6 +50,12 @@ jobs:
 
       - uses: r-lib/actions/setup-pandoc@master
 
+      - name: Cache R packages
+        uses: actions/cache@v2
+        with:
+          path: ${{ env.R_LIBS_USER }}
+          key: ${{ runner.os }}-${{ steps.install-r.outputs.full-r-version }}-1-
+
       - uses: r-lib/actions/install-r-packages@install-r-action
 
       - name: Check
