@@ -50,6 +50,8 @@ jobs:
           r-version: ${{ matrix.config.r }}
           http-user-agent: ${{ matrix.config.http-user-agent }}
 
+      - run: R CMD javareconf
+
       - uses: r-lib/actions/setup-pandoc@v1
 
       - name: Install pak and query dependencies
