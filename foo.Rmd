@@ -4,7 +4,7 @@ output: github_document
 
 # R-actions-test
 
-A repo for testing GitHub Actions
+A repo for testing GitHub Actions foo
 
 ```{r}
 plot(1:10)
