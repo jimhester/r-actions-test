@@ -21,11 +21,10 @@ jobs:
           remotes::install_local(".")
           remotes::install_cran("rmarkdown")
         shell: Rscript {0}
+      - run: git diff-tree --no-commit-id --name-only -r HEAD
       - name: Render README
         run: |
-          git diff-tree --no-commit-id --name-only -r HEAD
           RMD_PATH=$(git diff-tree --no-commit-id --name-only -r HEAD | grep '[.]Rmd$' | head -n 1)
-          echo $RMD_PATH
           Rscript -e 'rmarkdown::render(commandArgs(TRUE))' ${RMD_PATH}
       - name: Commit results
         run: |
