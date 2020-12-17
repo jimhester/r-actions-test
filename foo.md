@@ -1,7 +1,7 @@
 
 # R-actions-test
 
-A repo for testing GitHub Actions foo
+A repo for testing GitHub Actions foo2
 
 ``` r
 plot(1:10)
