@@ -1,6 +1,6 @@
 # R-actions-test
 
-A repo for testing GitHub Actions - foo bar baz qux blah foo
+A repo for testing GitHub Actions - foo bar baz qux blah foo aroistenrsaoit
 
 ```{r}
 plot(1:10)
