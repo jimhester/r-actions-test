@@ -3,11 +3,11 @@ on:
     paths:
       - '**.Rmd'
 
-name: Render Rmd files
+name: Render Rmarkdown files
 
 jobs:
   render:
-    name: Render README
+    name: Render Rmarkdown files
     runs-on: macOS-latest
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
@@ -23,13 +23,13 @@ jobs:
           remotes::install_local(".")
           remotes::install_cran("rmarkdown")
         shell: Rscript {0}
-      - name: Render README
+      - name: Render Rmarkdown files
         run: |
           RMD_PATH=($(git diff-tree --no-commit-id --name-only -r HEAD | grep '[.]Rmd$'))
-          Rscript -e 'for (file in commandArgs(TRUE)) rmarkdown::render(file)' ${RMD_PATH}
+          Rscript -e 'for (file in commandArgs(TRUE)) rmarkdown::render(file)' ${RMD_PATH[*]}
       - name: Commit results
         run: |
           git config --local user.email "actions@github.com"
           git config --local user.name "GitHub Actions"
-          git commit ${RMD_PATH/.Rmd/.md} -m 'Re-build README.Rmd' || echo "No changes to commit"
+          git commit ${RMD_PATH[*]/.Rmd/.md} -m 'Re-build Rmarkdown files' || echo "No changes to commit"
           git push origin || echo "No changes to commit"
