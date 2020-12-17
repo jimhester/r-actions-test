@@ -24,6 +24,7 @@ jobs:
       - name: Render README
         run: |
           RMD_PATH=$(git diff-tree --no-commit-id --name-only -r HEAD | grep '[.]Rmd$' | head -n 1)
+          echo $RMD_PATH
           Rscript -e 'rmarkdown::render(commandArgs(TRUE))' ${RMD_PATH}
       - name: Commit results
         run: |
