@@ -1,7 +1,4 @@
-on:
-  push:
-    paths:
-      - '**.Rmd'
+on: push
 
 name: Render Rmarkdown files
 
