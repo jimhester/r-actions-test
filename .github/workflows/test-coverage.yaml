@@ -48,5 +48,5 @@ jobs:
           cov <- covr::package_coverage(quiet = FALSE)
           Sys.which("gcov")
           print(cov)
-          covr::codecov(cov)
+          covr::codecov(coverage = cov)
         shell: Rscript {0}
