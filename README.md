@@ -1,6 +1,7 @@
 
 # R-actions-test
 
+o
 A repo for testing GitHub Actions readme
 
 ``` r
