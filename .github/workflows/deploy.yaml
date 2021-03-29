@@ -10,22 +10,16 @@ jobs:
   deploy:
     runs-on: ubuntu-20.04
     steps:
-    - name: start deployment
-      uses: bobheadxi/deployments@v0.4.3
-      id: deployment
-      with:
-        step: start
-        token: ${{ secrets.GITHUB_TOKEN }}
-        env: release
+    - uses: actions/checkout@v2
+
+    - uses: ouzi-dev/commit-status-updater@v1.1.0
 
     - name: do my deploy
       run: echo hi
 
-    - name: update deployment status
-      uses: bobheadxi/deployments@v0.4.3
-      if: always()
+    - uses: ouzi-dev/commit-status-updater@v1.1.0
       with:
-        step: finish
-        token: ${{ secrets.GITHUB_TOKEN }}
-        status: ${{ job.status }}
-        deployment_id: ${{ steps.deployment.outputs.deployment_id }}
+        status: "success"
+        url: http://github.com/r-lib/devtools
+        description: "deploy successful"
+        name: "A name for the status check"
