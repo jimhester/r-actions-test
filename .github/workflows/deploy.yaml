@@ -8,6 +8,7 @@ on:
 
 jobs:
   deploy:
+    runs-on: ubuntu-20.04
     steps:
     - name: start deployment
       uses: bobheadxi/deployments@v0.4.3
