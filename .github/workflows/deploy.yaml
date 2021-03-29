@@ -18,7 +18,7 @@ jobs:
         env: release
 
     - name: do my deploy
-      # ...
+      run: echo hi
 
     - name: update deployment status
       uses: bobheadxi/deployments@v0.4.3
