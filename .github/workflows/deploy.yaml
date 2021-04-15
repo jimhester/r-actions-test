@@ -1,0 +1,27 @@
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+    - uses: actions/checkout@v2
+
+    - uses: ouzi-dev/commit-status-updater@v1.1.0
+      with:
+        name: "A name for the status check"
+
+    - name: do my deploy
+      run: echo hi
+
+    - uses: ouzi-dev/commit-status-updater@v1.1.0
+      with:
+        status: "success"
+        url: http://github.com/r-lib/devtools
+        description: "deploy successful"
+        name: "A name for the status check"
