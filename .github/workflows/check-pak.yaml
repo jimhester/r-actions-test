@@ -27,10 +27,13 @@ jobs:
       matrix:
         config:
           - {os: macOS-latest,   r: 'release'}
-          - {os: macOS-latest,   r: '4.1'}
-          - {os: macOS-latest,   r: '4.0'}
-          - {os: macOS-latest,   r: '3.6'}
-          - {os: macOS-latest,   r: '3.3'}
+          - {os: macOS-latest,   r: 'oldrel/1'}
+          - {os: macOS-latest,   r: 'oldrel/2'}
+          - {os: macOS-latest,   r: 'oldrel/3'}
+          - {os: macOS-latest,   r: 'oldrel/4'}
+          - {os: macOS-latest,   r: 'oldrel/5'}
+          - {os: ubuntu-20.04,   r: 'oldrel/5'}
+          - {os: windows-latest,   r: 'oldrel/5'}
 
     env:
       RSPM: ${{ matrix.config.rspm }}
@@ -39,7 +42,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: r-lib/actions/setup-r@macos-4.1
+      - uses: r-lib/actions/setup-r@oldrel-endpoints
         id: install-r
         with:
           r-version: ${{ matrix.config.r }}
