@@ -19,8 +19,6 @@ Suggests:
     testthat (>= 2.1.0),
     knitr,
     rmarkdown,
-    sf,
-    tabulizerjars
 RoxygenNote: 7.1.0
 VignetteBuilder: knitr
 Config/Needs/website: pkgdown
