@@ -26,7 +26,9 @@ jobs:
       fail-fast: false
       matrix:
         config:
+          - {os: macOS-latest,   r: 'devel'}
           - {os: macOS-latest,   r: 'release'}
+          - {os: macOS-latest,   r: 'oldrel'}
           - {os: macOS-latest,   r: 'oldrel/1'}
           - {os: macOS-latest,   r: 'oldrel/2'}
           - {os: macOS-latest,   r: 'oldrel/3'}
