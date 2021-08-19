@@ -33,4 +33,4 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
-      - uses: jimhester/r-actions-test/install-r@master
+      - uses: jimhester/r-actions-test@master
