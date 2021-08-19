@@ -20,8 +20,6 @@ jobs:
   R-CMD-check:
     runs-on: ${{ matrix.config.os }}
 
-    name: ${{ matrix.config.os }} (${{ steps.install-r.outputs.installed-r-version }})
-
     strategy:
       fail-fast: false
       matrix:
