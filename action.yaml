@@ -7,8 +7,6 @@ inputs:
     default: 1
 runs:
   using: "composite"
-  env:
-    GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
   steps:
       - name: Install pak and query dependencies
         run: |
