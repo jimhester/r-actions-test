@@ -17,7 +17,7 @@ runs:
       - name: Get R and OS version
         id: get-version
         run: |
-          cat("##[set-output name=os-version;]", osVersion)
+          cat("##[set-output name=os-version;]", sessionInfo()$running)
           cat("##[set-output name=r-version;]", R.Version()$version.string)
         shell: Rscript {0}
 
@@ -52,4 +52,4 @@ runs:
 
       - name: Don't use tar 1.30 from Rtools35 to store the cache
         shell: bash
-        run: tar --version | grep -q '1.30' && echo "C:/Program Files/Git/usr/bin" >> $GITHUB_PATH
+        run: tar --version | grep -q '1.30' && echo "C:/Program Files/Git/usr/bin" >> $GITHUB_PATH || true
