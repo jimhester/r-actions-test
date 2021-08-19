@@ -49,3 +49,9 @@ jobs:
           http-user-agent: ${{ matrix.config.http-user-agent }}
 
       - run: tar --version
+
+      - name: Don't use tar 1.30 from Rtools35 to store the cache
+        shell: bash
+        run: tar --version | grep -q '1.30' && echo "C:/Program Files/Git/usr/bin" >> $GITHUB_PATH || true
+
+      - run: tar --version
