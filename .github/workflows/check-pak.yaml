@@ -41,6 +41,4 @@ jobs:
       RSPM: ${{ matrix.config.rspm }}
 
     steps:
-      - run: |
-        tar --version
-
+      - run: tar --version
