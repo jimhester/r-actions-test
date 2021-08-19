@@ -35,15 +35,4 @@ jobs:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
-      - uses: actions/checkout@v2
-
-      - uses: r-lib/actions/setup-r@release-user-agent
-        id: install-r
-        with:
-          r-version: ${{ matrix.config.r }}
-          http-user-agent: ${{ matrix.config.http-user-agent }}
-
-      - name: Install pak and query dependencies
-        run: |
-          print(options("HTTPUserAgent"))
-        shell: Rscript {0}
+      - uses: r-actions-test/install-r@master
