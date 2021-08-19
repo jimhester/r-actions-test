@@ -17,8 +17,8 @@ runs:
       - name: Get R and OS version
         id: get-version
         run: |
-          cat("##[set-output name=os-version;]", sessionInfo()$running)
-          cat("##[set-output name=r-version;]", R.Version()$version.string)
+          cat("##[set-output name=os-version;]", sessionInfo()$running, "\n", sep = "")
+          cat("##[set-output name=r-version;]", R.Version()$version.string, sep = "")
         shell: Rscript {0}
 
       - name: Restore R package cache
@@ -28,7 +28,7 @@ runs:
             ${{ env.R_LIBS_USER }}/*
             !${{ env.R_LIBS_USER }}/pak
           key: ${{ steps.get-version.outputs.os-version }}-${{ steps.get-version.outputs.r-version }}-${{inputs.cache-version }}-${{ hashFiles('.github/r-depends.rds') }}
-          restore-key: ${{ steps.get-version.outputs.os-version }}-${{ steps.get-version.outputs.r-version }}-${{inputs.cache-version }}-
+          restore-keys: ${{ steps.get-version.outputs.os-version }}-${{ steps.get-version.outputs.r-version }}-${{inputs.cache-version }}-
 
       - name: Install system dependencies
         run: |
