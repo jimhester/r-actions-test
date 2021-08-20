@@ -57,6 +57,5 @@ runs:
         run: |
           if command -v /c/Rtools/bin/tar && /c/Rtools/bin/tar --version | grep -q 'tar (GNU tar) 1.30'
           then
-          echo 'hello testing!'
           echo 'C:/Program Files/Git/usr/bin' >> $GITHUB_PATH
           fi
