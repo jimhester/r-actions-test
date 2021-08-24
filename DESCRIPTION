@@ -21,4 +21,5 @@ Suggests:
     rmarkdown,
 RoxygenNote: 7.1.0
 VignetteBuilder: knitr
-Config/Needs/website: pkgdown
+Config/Needs/website: pkgdown, tidyverse/tidytemplate
+Config/Needs/coverage: covr
