@@ -32,7 +32,7 @@ runs:
 
       - name: Install system dependencies
         run: |
-          if (Sys.info()[["sysname"]] == "linux") {
+          if (Sys.info()[["sysname"]] == "Linux") {
             pak::local_system_requirements(execute = TRUE)
             pak::pkg_system_requirements("rcmdcheck", execute = TRUE)
           }
@@ -56,6 +56,5 @@ runs:
         shell: bash
         run: |
           if command -v /c/Rtools/bin/tar && /c/Rtools/bin/tar --version | grep -q 'tar (GNU tar) 1.30'
-          then
-          echo 'C:/Program Files/Git/usr/bin' >> $GITHUB_PATH
+            then echo 'C:/Program Files/Git/usr/bin' >> $GITHUB_PATH
           fi
