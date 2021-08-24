@@ -52,7 +52,7 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@extra-packages
         with:
-          extra-packages: 'rcmdcheck'
+          extra-packages: '"rcmdcheck"'
 
       - run: echo $PATH
         shell: bash
