@@ -52,7 +52,9 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@extra-packages
         with:
-          extra-packages: rcmdcheck
+          extra-packages: |
+            rcmdcheck
+            ggplot2
 
       - run: echo $PATH
         shell: bash
