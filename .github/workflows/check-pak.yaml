@@ -59,7 +59,7 @@ jobs:
           extra-packages: |
             rcmdcheck
             ggplot2
-          cache-version: 3
+          cache-version: 4
 
       - run: echo $PATH
         shell: bash
