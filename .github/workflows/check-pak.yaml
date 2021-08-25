@@ -46,8 +46,8 @@ jobs:
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
 
-      - run: cat ~/.Rprofile
-        shell: bash
+      - run: writeLines(readLines("~/.Rprofile"))
+        shell: Rscript {0}
 
       #- uses: r-lib/actions/setup-pandoc@v1
 
