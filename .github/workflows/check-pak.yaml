@@ -49,6 +49,9 @@ jobs:
       - run: writeLines(readLines("~/.Rprofile"))
         shell: Rscript {0}
 
+      - run: source("https://docs.rstudio.com/rspm/admin/check-user-agent.R")
+        shell: Rscript {0}
+
       - uses: r-lib/actions/setup-pandoc@v1
 
       - uses: r-lib/actions/setup-r-dependencies@use-public-rspm
