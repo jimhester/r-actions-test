@@ -40,7 +40,7 @@ jobs:
           use-public-rspm: true
 
       - uses: r-lib/actions/setup-r-dependencies@v1
-        with:
-          archive-name: ${{ matrix.config.os }}-r-${{ matrix.config.r }}-results
 
       - uses: r-lib/actions/check-r-package@check-r-package
+        with:
+          archive-name: ${{ matrix.config.os }}-r-${{ matrix.config.r }}-results
