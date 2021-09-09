@@ -32,11 +32,11 @@ jobs:
       - uses: actions/checkout@v2
 
       - uses: r-lib/actions/setup-r@v1
-        env:
-          CRAN: c("https://inla.r-inla-download.org/R/stable/", "https://cloud.r-project.org")
         with:
           r-version: ${{ matrix.config.r }}
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
 
-      - run: cat ~/.Rprofile
+      - run: |
+          writeLines('options(repos = c(getOption(\"repos\"), INLR = "https://inla.r-inla-download.org/R/stable/"))', "~/.Rprofile", append = TRUE)
+        shell: Rscript {0}
