@@ -38,5 +38,5 @@ jobs:
           use-public-rspm: true
 
       - run: |
-          writeLines('options(repos = c(getOption(\"repos\"), INLR = "https://inla.r-inla-download.org/R/stable/"))', file("~/.Rprofile", append = TRUE))
+          writeLines('options(repos = c(getOption(\"repos\"), INLR = "https://inla.r-inla-download.org/R/stable/"))', file("~/.Rprofile", "ab"))
         shell: Rscript {0}
