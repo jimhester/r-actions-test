@@ -40,3 +40,7 @@ jobs:
       - run: |
           writeLines('options(repos = c(getOption(\"repos\"), INLR = "https://inla.r-inla-download.org/R/stable/"))', file("~/.Rprofile", "ab"))
         shell: Rscript {0}
+
+      - uses: r-lib/actions/setup-r-dependencies@v1
+        with:
+          extra-packages: oharar/LatentINLA
