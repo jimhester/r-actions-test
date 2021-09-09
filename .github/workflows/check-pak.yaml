@@ -39,5 +39,4 @@ jobs:
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
 
-      - run:
-        cat ~/.Rprofile
+      - run: cat ~/.Rprofile
