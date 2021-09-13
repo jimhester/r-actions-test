@@ -31,15 +31,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: r-lib/actions/setup-r@v1
+      - uses: r-lib/actions/setup-r@extra-repos
         with:
           r-version: ${{ matrix.config.r }}
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
-
-      - run: |
-          writeLines('options(repos = c(INLR = "https://inla.r-inla-download.org/R/stable/", getOption(\"repos\")))', file("~/.Rprofile", "ab"))
-        shell: Rscript {0}
+          extra-repositories: https://inla.r-inla-download.org/R/stable/
 
       - run: |
           getOption("repos")
@@ -47,4 +44,5 @@ jobs:
 
       - uses: r-lib/actions/setup-r-dependencies@v1
         with:
-          extra-packages: oharar/LatentINLA
+          extra-packages: |
+            INLR
