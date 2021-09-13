@@ -38,6 +38,8 @@ jobs:
           use-public-rspm: true
           extra-repositories: https://inla.r-inla-download.org/R/stable/
 
+      - run: cat("~/.Rprofile")
+
       - run: |
           getOption("repos")
         shell: Rscript {0}
