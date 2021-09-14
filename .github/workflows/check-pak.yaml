@@ -31,20 +31,12 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - uses: r-lib/actions/setup-r@extra-repos
+      - uses: r-lib/actions/setup-r@v1
         with:
           r-version: ${{ matrix.config.r }}
           http-user-agent: ${{ matrix.config.http-user-agent }}
           use-public-rspm: true
-          extra-repositories: https://inla.r-inla-download.org/R/stable/
-
-      - run: cat ~/.Rprofile
-
-      - run: |
-          getOption("repos")
-        shell: Rscript {0}
 
       - uses: r-lib/actions/setup-r-dependencies@v1
-        with:
-          extra-packages: |
-            INLA
+
+      - uses: r-lib/actions/check-r-package@check-r-package2
