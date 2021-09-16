@@ -18,27 +18,14 @@ name: R-CMD-check
 
 jobs:
   R-CMD-check:
-    runs-on: ${{ matrix.config.os }}
-
-    name: ${{ matrix.config.os }} (${{ matrix.config.r }})
-
-    strategy:
-      fail-fast: false
-      matrix:
-        config:
-          - {os: ubuntu-18.04,   r: 'oldrel-2'}
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
 
-      - uses: r-lib/actions/setup-r@oldrel2
-        with:
-          r-version: ${{ matrix.config.r }}
-          http-user-agent: ${{ matrix.config.http-user-agent }}
-          use-public-rspm: true
+      - uses: r-lib/actions/setup-r@master
 
-      - uses: r-lib/actions/setup-r-dependencies@v1
-        with:
-          extra-packages: rcmdcheck
+      - run: cat ~/.Rprofile
 
-      - uses: r-lib/actions/check-r-package@check-r-package2
+      - run: 'install.packages("shiny")'
+        shell: Rscript {0}
