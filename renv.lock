@@ -63,16 +63,10 @@
     },
     "cli": {
       "Package": "cli",
-      "Version": "3.0.1.9000",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "cli",
-      "RemoteUsername": "r-lib",
-      "RemotePkgRef": "r-lib/cli",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "c4180c828a537aee7ec472ac0a508fa95b68161f",
-      "Hash": "8154c46a23e4a2a83857e9d731d286e5"
+      "Version": "3.0.1",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "e3ae5d68dea0c55a12ea12a9fda02e61"
     },
     "crayon": {
       "Package": "crayon",
@@ -164,7 +158,8 @@
       "Package": "glue",
       "Version": "1.4.2",
       "Source": "Repository",
-      "Repository": "CRAN"
+      "Repository": "CRAN",
+      "Hash": "6efd734b14c6471cfe443345f3e35e29"
     },
     "highr": {
       "Package": "highr",
@@ -313,16 +308,10 @@
     },
     "processx": {
       "Package": "processx",
-      "Version": "3.5.2.9000",
-      "Source": "GitHub",
-      "RemoteType": "github",
-      "RemoteHost": "api.github.com",
-      "RemoteRepo": "processx",
-      "RemoteUsername": "r-pkgs",
-      "RemotePkgRef": "r-pkgs/processx",
-      "RemoteRef": "HEAD",
-      "RemoteSha": "ee0d320f89f15d6c04339afefcc2a2e91fbe628c",
-      "Hash": "94b40f8a5ddaa98723ebcf06fbe67d6b"
+      "Version": "3.5.2",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "0cbca2bc4d16525d009c4dbba156b37c"
     },
     "ps": {
       "Package": "ps",
@@ -406,12 +395,10 @@
     },
     "stringr": {
       "Package": "stringr",
-      "Version": "1.4.0.9000",
-      "Source": "Git",
-      "RemoteType": "git2r",
-      "RemoteUrl": "git://github.com/hadley/stringr.git",
-      "RemoteSha": "6670a379f62c5219bd3a27c05a5c482de7181bca",
-      "Hash": "667005488ee07c0035e19fb2ea1b6126"
+      "Version": "1.4.0",
+      "Source": "Repository",
+      "Repository": "CRAN",
+      "Hash": "0759e6b6c0957edb1311028a49a35e76"
     },
     "testthat": {
       "Package": "testthat",
