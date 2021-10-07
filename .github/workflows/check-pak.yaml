@@ -25,4 +25,4 @@ jobs:
 
       - uses: r-lib/actions/setup-r@master
 
-      - uses: r-lib/actions/setup-renv@master
+      - uses: r-lib/actions/setup-renv@setup-renv-fix
