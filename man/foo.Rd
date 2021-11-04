@@ -2,12 +2,12 @@
 % Please edit documentation in R/foo.R
 \name{foo}
 \alias{foo}
-\title{Document a function}
+\title{Try documenting}
 \usage{
 foo(x)
 }
 \arguments{
-\item{x}{foo}
+\item{x}{the x parameter}
 }
 \description{
 Try documenting
