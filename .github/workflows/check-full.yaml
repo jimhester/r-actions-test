@@ -32,7 +32,7 @@ jobs:
             cat(file = makevars_user, append = TRUE,
             "CXX14=g++
             CXX14STD=-std=c++1y
-            CXX14FLAGS=-Wall -g -02")
+            CXX14FLAGS=-Wall -g -O2")
           }
         shell: Rscript {0}
 
