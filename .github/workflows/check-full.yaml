@@ -27,7 +27,7 @@ jobs:
       - name: foo
         run: |
           if (.Platform$OS.type == "windows") {
-            makevars_user <- tools::makevars_user()
+            makevars_user <- path.expand("~/.R/Makevars")
             dir.create(dirname(makevars_user), recursive = TRUE)
             cat(file = makevars_user, append = TRUE,
             "CXX14=g++
