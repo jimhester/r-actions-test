@@ -24,17 +24,6 @@ jobs:
           r-version: ${{ matrix.config.r }}
           use-public-rspm: true
 
-      - name: foo
-        run: |
-          if (.Platform$OS.type == "windows") {
-            makevars_user <- path.expand("~/.R/Makevars")
-            dir.create(dirname(makevars_user), recursive = TRUE)
-            cat(file = makevars_user, append = TRUE,
-            "CXX14=g++
-            CXX14STD=-std=c++1y
-            CXX14FLAGS=-Wall -g -O2")
-          }
-        shell: Rscript {0}
-
-      - run: install.packages("xgboost")
-        shell: Rscript {0}
+      - uses: r-lib/actions/setup-r-dependecies@TNonet-master
+        with:
+          working-directory: 'foo'
